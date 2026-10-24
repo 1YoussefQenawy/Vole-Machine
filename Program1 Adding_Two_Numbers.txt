@@ -1,0 +1,5 @@
+2001  ;R0-->01
+2102  ;R1-->02
+5201  ;R2-->03
+3200  ;Display the result stored in R2 on the screen.
+C000  ;End program

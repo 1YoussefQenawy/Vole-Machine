@@ -1,0 +1,5 @@
+2004  ;R0--> 04
+21FE  ;R1--> -2
+5201  ;R2--> The Sum of 04 and -2 (02)
+3200  ;Display result on the screen
+C000  ;End program

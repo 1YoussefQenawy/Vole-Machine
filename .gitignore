@@ -1,0 +1,37 @@
+# CMake & Build Artifacts
+build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+*.ninja
+.ninja_*
+compile_commands.json
+
+# Compiled Binaries & Object Files
+*.o
+*.obj
+*.a
+*.lib
+*.dll
+*.so
+*.dylib
+*.exe
+*.pdb
+*.ilk
+
+# Qt Autogen & Creator Files
+*_autogen/
+*.pro.user
+*.pro.user.*
+.qmake.stash
+
+# IDE & OS Temporary Files
+.vscode/
+.idea/
+.vs/
+*.swp
+*~
+.DS_Store
+Thumbs.db

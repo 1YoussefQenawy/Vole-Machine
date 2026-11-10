@@ -1,0 +1,75 @@
+
+; ==========================================
+; ARITHMETIC COUNTDOWN WITH VERIFICATION
+; (6 + 8 - 11) * (5 - 3) = 6
+; Verify result and display comparison status
+; ==========================================
+
+; PART 1: Initialize expected value
+
+2000  ; R0 = 00 (comparison reference)
+2C06  ; RC = 06 (expected result)
+
+; PART 2: Calculate 6 + 8 - 11 = 3
+
+2106  ; R1 = 06
+2208  ; R2 = 08
+23F5  ; R3 = -11
+
+5412  ; R4 = R1 + R2
+5443  ; R4 = R4 + R3 = 03
+34E0  ; Store result at E0
+34FF  ; Display 03
+
+; PART 3: Calculate 5 - 3 = 2
+
+2505  ; R5 = 05
+26FD  ; R6 = -3
+5756  ; R7 = R5 + R6 = 02
+37E1  ; Store result at E1
+37FF  ; Display 02
+
+; PART 4: Multiply 3 * 2
+
+2800  ; R8 = 00 (accumulator)
+2903  ; R9 = 03 (multiplicand)
+2A02  ; RA = 02 (counter)
+
+5889  ; R8 = R8 + R9
+2BFF  ; RB = -1
+5AAB  ; RA = RA - 1
+BA2C  ; If RA == R0, jump to result
+B022  ; Otherwise, repeat multiplication
+
+38E2  ; Store result at E2
+38FF  ; Display result (expected: 06)
+
+; PART 5: Verify multiplication result
+
+2DFA  ; RD = -6
+5D8D  ; RD = R8 - 6
+2EFF  ; RE = FF (success indicator)
+BD3E  ; If RD == R0, jump to success
+2E00  ; RE = 00 (failure indicator)
+3EFF  ; Display comparison result (00)
+C000  ; Halt if verification failed
+
+; PART 6: Successful comparison
+
+3EFF  ; Display comparison result (FF)
+
+; PART 7: Initialize countdown
+
+4089  ; R9 = R8 (06)
+2AFF  ; RA = -1
+
+; PART 8: Countdown loop
+
+599A  ; R9 = R9 - 1
+39FF  ; Display R9
+B94C  ; If R9 == R0, jump to halt
+B044  ; Otherwise, repeat countdown
+
+; PART 9: Halt
+
+C000  ; Halt

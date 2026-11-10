@@ -1,0 +1,921 @@
+/* ============================================================================
+   VOLE MACHINE SIMULATOR – DESKTOP THEME STYLESHEET (theme.qss)
+   ----------------------------------------------------------------------------
+   All visual properties (colors, typography, borders, radii, padding) are
+   centralized in this file. Modify the @tokens below to customize the look
+   and feel of the entire application without touching C++ logic.
+   ============================================================================ */
+
+/* --- 1. Color Palette Tokens --- */
+@bg_workspace:          #0C1017;
+@bg_card:               #131923;
+@bg_subcard:            #18202C;
+@bg_input:              #090D13;
+@bg_screen_bezel:       #0A0E14;
+@bg_screen_glass:       #05080C;
+@bg_screen_log:         #070B10;
+
+@border_card:           #212C3D;
+@border_subtle:         #1B2433;
+@border_input:          #2A384D;
+@border_focus:          #3B82F6;
+
+@text_primary:          #E6EDF5;
+@text_secondary:        #9AAEC4;
+@text_muted:            #5E7188;
+@text_bright:           #FFFFFF;
+
+@accent_primary:        #2563EB;
+@accent_primary_hover:  #3B82F6;
+@accent_primary_press:  #1D4ED8;
+
+@accent_emerald:        #10B981;
+@accent_emerald_hover:  #34D399;
+@accent_emerald_press:  #059669;
+@accent_emerald_bg:     #0C2B23;
+@accent_emerald_border: #1A634E;
+
+@accent_cyan:           #06B6D4;
+@accent_cyan_bg:        #0D2633;
+@accent_cyan_border:    #1A526B;
+
+@accent_amber:          #F59E0B;
+@accent_amber_hover:    #FBBF24;
+@accent_amber_bg:       #2E200B;
+@accent_amber_border:   #785114;
+
+@accent_red:            #EF4444;
+@accent_red_bg:         #331418;
+@accent_red_border:     #7A272F;
+
+@accent_violet:         #8B5CF6;
+@accent_violet_bg:      #221A3B;
+@accent_violet_border:  #6D28D9;
+
+@cell_bg_default:       #101620;
+@cell_bg_hover:         #1A2332;
+@cell_bg_nonzero:       #122233;
+@cell_border_nonzero:   #234564;
+
+/* --- 2. Typography & Geometry Tokens --- */
+@font_ui:               "Segoe UI", "Inter", "Roboto", sans-serif;
+@font_mono:             "Cascadia Mono", "Consolas", "Courier New", monospace;
+
+@radius_card:           8px;
+@radius_control:        5px;
+@radius_cell:           4px;
+@radius_badge:          4px;
+
+/* ============================================================================
+   GLOBAL & WORKSPACE BASE
+   ============================================================================ */
+QMainWindow#VoleMainWindow,
+QStackedWidget#PageStack,
+QWidget#CentralWorkspace,
+QWidget#HomePage {
+    background-color: @bg_workspace;
+    color: @text_primary;
+    font-family: @font_ui;
+    font-size: 12px;
+}
+
+QWidget#SidebarContainer,
+QWidget#MainAreaContainer {
+    background-color: transparent;
+}
+
+QToolTip {
+    background-color: @bg_subcard;
+    color: @text_primary;
+    border: 1px solid @border_focus;
+    padding: 5px 8px;
+    border-radius: @radius_control;
+    font-family: @font_mono;
+    font-size: 11px;
+}
+
+/* ============================================================================
+   HOME PAGE (CAIRO UNIVERSITY BACKGROUND + GOLD ACCENT LEFT + 8 × 8 GRID)
+   ============================================================================ */
+QWidget#HomeLeftSection,
+QWidget#HomeRightOuter {
+    background-color: transparent;
+    border: none;
+}
+
+QLabel#HomeTitle {
+    color: @text_bright;
+    font-family: @font_ui;
+    font-size: 52px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    background-color: transparent;
+}
+
+QLabel#HomeSubtitle {
+    color: #93A8C1;
+    font-family: @font_ui;
+    font-size: 22px;
+    font-weight: 400;
+    background-color: transparent;
+}
+
+QFrame#HomeGoldAccentLine {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                                      stop:0 #DBA858,
+                                      stop:0.65 #C89242,
+                                      stop:1 rgba(219, 168, 88, 0));
+    border: none;
+    border-radius: 1px;
+}
+
+QLabel#HomeMemberName {
+    color: #F0F5FA;
+    font-family: @font_ui;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 0px;
+    background-color: transparent;
+}
+
+QFrame#HomeMemberSeparator {
+    background-color: rgba(147, 168, 193, 0.38);
+    border: none;
+}
+
+QLabel#HomeMemberId {
+    color: #DBA858;
+    font-family: @font_ui;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 0px;
+    background-color: transparent;
+}
+
+QWidget#HomeMetaRow {
+    background-color: transparent;
+}
+
+QLabel#HomeMetaTitle {
+    color: #8EA3BC;
+    font-family: @font_ui;
+    font-size: 13px;
+    font-weight: 500;
+    background-color: transparent;
+}
+
+QLabel#HomeMetaValue {
+    color: #F4F7FB;
+    font-family: @font_ui;
+    font-size: 18px;
+    font-weight: 700;
+    background-color: transparent;
+}
+
+QFrame#HomeMetaGoldSeparator {
+    background-color: #DBA858;
+    border: none;
+}
+
+QPushButton#HomeStartButton {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                                      stop:0 #D4A152,
+                                      stop:0.5 #E0B265,
+                                      stop:1 #CF9B4B);
+    color: #0E1520;
+    border: 1px solid #E5BC74;
+    border-radius: 23px;
+    min-height: 48px;
+    max-height: 48px;
+    padding: 0px 20px;
+    font-family: @font_ui;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+}
+
+QPushButton#HomeStartButton:hover {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                                      stop:0 #DFB062,
+                                      stop:0.5 #EAC077,
+                                      stop:1 #DAA85A);
+    border: 1px solid #F0CC8A;
+}
+
+QPushButton#HomeStartButton:pressed {
+    background-color: #BE8C3E;
+}
+
+QFrame#HomeMatrixFrame {
+    background-color: rgba(10, 16, 26, 0.45);
+    border: 1px solid rgba(165, 190, 220, 0.14);
+    border-radius: 12px;
+}
+
+QFrame#HomeMatrixCell {
+    background-color: rgba(20, 30, 44, 0.78);
+    border: 1px solid rgba(175, 200, 230, 0.13);
+    border-radius: 8px;
+}
+
+QLabel#HomeMatrixCellLabel {
+    color: #D2DFEE;
+    font-family: @font_ui;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: transparent;
+}
+
+/* ============================================================================
+   CARDS, CONTAINERS & HEADERS
+   ============================================================================ */
+QFrame[panelRole="card"] {
+    background-color: @bg_card;
+    border: 1px solid @border_card;
+    border-radius: @radius_card;
+}
+
+QFrame#PanelDivider {
+    background-color: @border_subtle;
+    max-height: 1px;
+    border: none;
+    margin: 2px 0px;
+}
+
+QLabel#SectionTitle {
+    color: @text_secondary;
+    font-family: @font_ui;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+}
+
+QLabel#FieldLabel {
+    color: @text_secondary;
+    font-family: @font_ui;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+QLabel#PanelMetaBadge {
+    background-color: @bg_subcard;
+    color: @text_secondary;
+    border: 1px solid @border_subtle;
+    border-radius: @radius_badge;
+    padding: 1px 6px;
+    font-family: @font_mono;
+    font-size: 9px;
+    font-weight: 700;
+}
+
+/* ============================================================================
+   INPUTS & CODE EDITOR
+   ============================================================================ */
+QLineEdit {
+    background-color: @bg_input;
+    color: @text_primary;
+    border: 1px solid @border_input;
+    border-radius: @radius_control;
+    padding: 5px 8px;
+    min-height: 18px;
+    font-family: @font_ui;
+    font-size: 12px;
+    selection-background-color: @accent_primary;
+}
+
+QLineEdit:focus {
+    border: 1px solid @border_focus;
+}
+
+QLineEdit:disabled {
+    color: @text_muted;
+    background-color: @bg_card;
+}
+
+QLineEdit#AddressInput,
+QLineEdit#InspectorHexInput {
+    font-family: @font_mono;
+    font-size: 12px;
+    font-weight: 700;
+    color: @accent_cyan;
+}
+
+QPlainTextEdit#ProgramEditor {
+    background-color: @bg_input;
+    color: @text_primary;
+    border: 1px solid @border_input;
+    border-radius: @radius_control;
+    padding: 6px;
+    font-family: @font_mono;
+    font-size: 12px;
+    selection-background-color: @accent_primary;
+}
+
+QPlainTextEdit#ProgramEditor:focus {
+    border: 1px solid @border_focus;
+}
+
+QLabel#SourceModeBadge {
+    border-radius: @radius_badge;
+    padding: 1px 7px;
+    font-family: @font_mono;
+    font-size: 9px;
+    font-weight: 700;
+}
+
+QLabel#SourceModeBadge[mode="manual"] {
+    background-color: @accent_cyan_bg;
+    color: @accent_cyan;
+    border: 1px solid @accent_cyan_border;
+}
+
+QLabel#SourceModeBadge[mode="file"] {
+    background-color: @accent_violet_bg;
+    color: #C4B5FD;
+    border: 1px solid @accent_violet_border;
+}
+
+/* ============================================================================
+   BUTTONS
+   ============================================================================ */
+QPushButton {
+    font-family: @font_ui;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: @radius_control;
+    padding: 5px 10px;
+    min-height: 20px;
+}
+
+QPushButton#PrimaryActionButton {
+    background-color: @accent_primary;
+    color: @text_bright;
+    border: 1px solid @accent_primary_hover;
+    font-weight: 700;
+}
+
+QPushButton#PrimaryActionButton:hover {
+    background-color: @accent_primary_hover;
+}
+
+QPushButton#PrimaryActionButton:pressed {
+    background-color: @accent_primary_press;
+}
+
+QPushButton#RunAllButton {
+    background-color: @accent_emerald;
+    color: #04130E;
+    border: 1px solid @accent_emerald_hover;
+    font-weight: 700;
+}
+
+QPushButton#RunAllButton:hover {
+    background-color: @accent_emerald_hover;
+}
+
+QPushButton#RunAllButton:pressed {
+    background-color: @accent_emerald_press;
+}
+
+QPushButton#StepButton {
+    background-color: @accent_cyan_bg;
+    color: #67E8F9;
+    border: 1px solid @accent_cyan;
+    font-weight: 700;
+}
+
+QPushButton#StepButton:hover {
+    background-color: #164E63;
+    color: @text_bright;
+}
+
+QPushButton#StepButton:pressed {
+    background-color: #0E3A4A;
+}
+
+QPushButton#HaltButton {
+    background-color: @accent_amber_bg;
+    color: #FCD34D;
+    border: 1px solid @accent_amber_border;
+    font-weight: 700;
+}
+
+QPushButton#HaltButton:hover {
+    background-color: #452E0D;
+    color: @text_bright;
+    border: 1px solid @accent_amber;
+}
+
+QPushButton#HaltButton:pressed {
+    background-color: #261907;
+}
+
+QPushButton#ResetButton {
+    background-color: @bg_subcard;
+    color: @text_secondary;
+    border: 1px solid @border_input;
+}
+
+QPushButton#ResetButton:hover {
+    background-color: @accent_red_bg;
+    color: #FCA5A5;
+    border: 1px solid @accent_red_border;
+}
+
+QPushButton#ResetButton:pressed {
+    background-color: #240D10;
+}
+
+QPushButton#SecondaryButton {
+    background-color: @bg_subcard;
+    color: @text_primary;
+    border: 1px solid @border_input;
+}
+
+QPushButton#SecondaryButton:hover {
+    background-color: @cell_bg_hover;
+    border: 1px solid @border_focus;
+}
+
+QPushButton#GhostButton {
+    background-color: transparent;
+    color: @text_secondary;
+    border: 1px solid @border_subtle;
+}
+
+QPushButton#GhostButton:hover {
+    background-color: @bg_subcard;
+    color: @text_primary;
+}
+
+QPushButton#BackHomeButton {
+    background-color: @bg_subcard;
+    color: @text_secondary;
+    border: 1px solid @border_input;
+    border-radius: @radius_badge;
+    padding: 2px 8px;
+    min-height: 18px;
+    max-height: 22px;
+    font-family: @font_ui;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+QPushButton#BackHomeButton:hover {
+    background-color: @cell_bg_hover;
+    color: @text_bright;
+    border: 1px solid @border_focus;
+}
+
+QPushButton#BackHomeButton:pressed {
+    background-color: @bg_input;
+}
+
+QPushButton#OverwriteButton {
+    background-color: @accent_violet_bg;
+    color: #DDD6FE;
+    border: 1px solid @accent_violet;
+    font-weight: 700;
+}
+
+QPushButton#OverwriteButton:hover {
+    background-color: @accent_violet;
+    color: @text_bright;
+}
+
+QPushButton:disabled,
+QPushButton#PrimaryActionButton:disabled,
+QPushButton#RunAllButton:disabled,
+QPushButton#StepButton:disabled,
+QPushButton#HaltButton:disabled,
+QPushButton#ResetButton:disabled,
+QPushButton#SecondaryButton:disabled,
+QPushButton#GhostButton:disabled,
+QPushButton#OverwriteButton:disabled {
+    background-color: @bg_subcard;
+    color: @text_muted;
+    border: 1px solid @border_subtle;
+}
+
+/* ============================================================================
+   MERGED COMPACT CPU SUB-CARD (INSIDE SCREEN PANEL: STATUS BADGE, PC, IR)
+   ============================================================================ */
+QFrame#CpuIntegratedCard {
+    background-color: @bg_subcard;
+    border: 1px solid @border_subtle;
+    border-radius: 6px;
+}
+
+QLabel#MetricLabel {
+    color: @text_muted;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+QLabel#MetricPrimaryValue {
+    color: @text_bright;
+    font-family: @font_mono;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+QLabel#MetricSubValue {
+    color: @accent_cyan;
+    font-family: @font_mono;
+    font-size: 9px;
+}
+
+QLabel#ExecutionStatusBadge {
+    border-radius: @radius_badge;
+    padding: 2px 4px;
+    font-family: @font_mono;
+    font-size: 9px;
+    font-weight: 700;
+}
+
+QLabel#ExecutionStatusBadge[statusState="ready"] {
+    background-color: @accent_emerald_bg;
+    color: #34D399;
+    border: 1px solid @accent_emerald_border;
+}
+
+QLabel#ExecutionStatusBadge[statusState="running"] {
+    background-color: @accent_cyan_bg;
+    color: #38BDF8;
+    border: 1px solid @accent_cyan_border;
+}
+
+QLabel#ExecutionStatusBadge[statusState="halted"] {
+    background-color: @accent_amber_bg;
+    color: #FBBF24;
+    border: 1px solid @accent_amber_border;
+}
+
+QLabel#ExecutionStatusBadge[statusState="error"] {
+    background-color: @accent_red_bg;
+    color: #F87171;
+    border: 1px solid @accent_red_border;
+}
+
+/* ============================================================================
+   SIMULATED SCREEN PANEL (COMPUTER DISPLAY + EXECUTION LOG + BOTTOM-LEFT FOOTER)
+   ============================================================================ */
+QLabel#ScreenByteBadge {
+    background-color: @accent_emerald_bg;
+    color: #34D399;
+    border: 1px solid @accent_emerald_border;
+    border-radius: @radius_badge;
+    padding: 1px 7px;
+    font-family: @font_mono;
+    font-size: 9px;
+    font-weight: 700;
+}
+
+QFrame#ScreenBezel {
+    background-color: @bg_screen_bezel;
+    border: 1px solid #253346;
+    border-radius: 6px;
+}
+
+QFrame#ScreenGlass {
+    background-color: @bg_screen_glass;
+    border: 1px solid #132230;
+    border-radius: 4px;
+}
+
+QPlainTextEdit#ScreenOutputView {
+    background-color: @bg_screen_glass;
+    color: #34D399;
+    border: none;
+    padding: 4px 8px;
+    font-family: @font_mono;
+    font-size: 14px;
+    font-weight: 700;
+    selection-background-color: @accent_emerald_border;
+}
+
+QFrame#ScreenLogHeader {
+    background-color: #091018;
+    border-top: 1px solid #14202E;
+    border-bottom: 1px solid #111A26;
+}
+
+QLabel#ScreenLogTitle {
+    color: @text_muted;
+    font-family: @font_mono;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+}
+
+QScrollArea#ScreenLogArea,
+QWidget#ScreenLogContainer {
+    background-color: @bg_screen_log;
+    border: none;
+}
+
+QLabel#ScreenLogEntry {
+    color: #7E93AB;
+    font-family: @font_mono;
+    font-size: 10px;
+    padding: 1px 0px;
+}
+
+QLabel#ScreenLogEntry[level="ready"] {
+    color: #8BA2BA;
+}
+
+QLabel#ScreenLogEntry[level="running"] {
+    color: #38BDF8;
+}
+
+QLabel#ScreenLogEntry[level="halted"] {
+    color: #FBBF24;
+}
+
+QLabel#ScreenLogEntry[level="error"] {
+    color: #F87171;
+}
+
+QLabel#ScreenLogEntry[level="edit"] {
+    color: #C4B5FD;
+}
+
+QFrame#ScreenFooter {
+    background-color: #070C12;
+    border-top: 1px solid #14202E;
+}
+
+QLabel#ScreenStreamText {
+    color: @text_muted;
+    font-family: @font_mono;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+/* ============================================================================
+   REGISTER GRID (R0 – RF, WIDER & EXPANDED TO FULL CONTAINER HEIGHT)
+   ============================================================================ */
+QFrame#RegisterCell {
+    background-color: @cell_bg_default;
+    border: 1px solid @border_subtle;
+    border-radius: @radius_cell;
+}
+
+QFrame#RegisterCell:hover {
+    background-color: @cell_bg_hover;
+    border: 1px solid @border_input;
+}
+
+QFrame#RegisterCell[nonZero="true"] {
+    background-color: @cell_bg_nonzero;
+    border: 1px solid @cell_border_nonzero;
+}
+
+QFrame#RegisterCell[selected="true"] {
+    background-color: @accent_violet_bg;
+    border: 1px solid @accent_violet;
+}
+
+QLabel#RegisterNameLabel {
+    color: @text_muted;
+    font-family: @font_mono;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+QLabel#RegisterHexValue {
+    color: @text_bright;
+    font-family: @font_mono;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+QFrame#RegisterCell[nonZero="true"] QLabel#RegisterHexValue {
+    color: #38BDF8;
+}
+
+QFrame#RegisterCell[selected="true"] QLabel#RegisterHexValue {
+    color: #DDD6FE;
+}
+
+/* ============================================================================
+   16 × 16 MAIN MEMORY MATRIX (256 CELLS, EXPANDED DIMENSIONS)
+   ============================================================================ */
+QLabel#MatrixHeaderCorner {
+    color: @text_muted;
+    font-family: @font_mono;
+    font-size: 9px;
+    font-weight: 700;
+}
+
+QLabel#MatrixColHeader,
+QLabel#MatrixRowHeader {
+    color: @text_secondary;
+    background-color: @bg_subcard;
+    border-radius: 3px;
+    padding: 2px 4px;
+    font-family: @font_mono;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+QLabel#LegendBadgePC {
+    color: #34D399;
+    font-family: @font_mono;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+QLabel#LegendBadgeNonZero {
+    color: #38BDF8;
+    font-family: @font_mono;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+QLabel#LegendBadgeSelected {
+    color: #C4B5FD;
+    font-family: @font_mono;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+QFrame#MemoryCell {
+    background-color: @cell_bg_default;
+    border: 1px solid @border_subtle;
+    border-radius: @radius_cell;
+}
+
+QFrame#MemoryCell:hover {
+    background-color: @cell_bg_hover;
+    border: 1px solid @border_input;
+}
+
+QFrame#MemoryCell[nonZero="true"] {
+    background-color: @cell_bg_nonzero;
+    border: 1px solid @cell_border_nonzero;
+}
+
+QFrame#MemoryCell[isPC="true"] {
+    background-color: @accent_emerald_bg;
+    border: 1px solid @accent_emerald;
+}
+
+QFrame#MemoryCell[isPCNext="true"] {
+    background-color: #0B221E;
+    border: 1px solid @accent_emerald_border;
+}
+
+QFrame#MemoryCell[selected="true"] {
+    background-color: @accent_violet_bg;
+    border: 1px solid @accent_violet;
+}
+
+QLabel#MemoryCellAddr {
+    color: @text_muted;
+    font-family: @font_mono;
+    font-size: 10px;
+}
+
+QLabel#MemoryCellVal {
+    color: @text_secondary;
+    font-family: @font_mono;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+QFrame#MemoryCell[nonZero="true"] QLabel#MemoryCellVal {
+    color: #38BDF8;
+}
+
+QFrame#MemoryCell[isPC="true"] QLabel#MemoryCellVal,
+QFrame#MemoryCell[isPCNext="true"] QLabel#MemoryCellVal {
+    color: #34D399;
+}
+
+QFrame#MemoryCell[selected="true"] QLabel#MemoryCellVal {
+    color: @text_bright;
+}
+
+/* ============================================================================
+   DECORATIVE INTRO FLASH HIGHLIGHTS (PURPLE, ORANGE, GREEN, BLUE)
+   Used by both the 8x8 Home Matrix and the 16x16 Simulator Memory Matrix.
+   ============================================================================ */
+QFrame#HomeMatrixCell[flash="purple"],
+QFrame#MemoryCell[flash="purple"] {
+    background-color: @accent_violet_bg;
+    border: 1px solid @accent_violet;
+}
+
+QFrame#HomeMatrixCell[flash="purple"] QLabel,
+QFrame#MemoryCell[flash="purple"] QLabel {
+    color: #DDD6FE;
+}
+
+QFrame#HomeMatrixCell[flash="orange"],
+QFrame#MemoryCell[flash="orange"] {
+    background-color: @accent_amber_bg;
+    border: 1px solid @accent_amber;
+}
+
+QFrame#HomeMatrixCell[flash="orange"] QLabel,
+QFrame#MemoryCell[flash="orange"] QLabel {
+    color: #FDE68A;
+}
+
+QFrame#HomeMatrixCell[flash="green"],
+QFrame#MemoryCell[flash="green"] {
+    background-color: @accent_emerald_bg;
+    border: 1px solid @accent_emerald;
+}
+
+QFrame#HomeMatrixCell[flash="green"] QLabel,
+QFrame#MemoryCell[flash="green"] QLabel {
+    color: #6EE7B7;
+}
+
+QFrame#HomeMatrixCell[flash="blue"],
+QFrame#MemoryCell[flash="blue"] {
+    background-color: @accent_cyan_bg;
+    border: 1px solid @accent_cyan;
+}
+
+QFrame#HomeMatrixCell[flash="blue"] QLabel,
+QFrame#MemoryCell[flash="blue"] QLabel {
+    color: #67E8F9;
+}
+
+/* ============================================================================
+   SELECTED VALUE INSPECTOR PANEL
+   ============================================================================ */
+QLabel#InspectorTargetBadge {
+    border-radius: @radius_badge;
+    padding: 1px 7px;
+    font-family: @font_mono;
+    font-size: 9px;
+    font-weight: 700;
+}
+
+QLabel#InspectorTargetBadge[targetType="memory"] {
+    background-color: @accent_cyan_bg;
+    color: #38BDF8;
+    border: 1px solid @accent_cyan_border;
+}
+
+QLabel#InspectorTargetBadge[targetType="register"] {
+    background-color: @accent_violet_bg;
+    color: #C4B5FD;
+    border: 1px solid @accent_violet_border;
+}
+
+QLabel#InspectorTargetTitle {
+    color: @text_bright;
+    font-family: @font_ui;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+QFrame#InspectorInfoBox {
+    background-color: @bg_subcard;
+    border: 1px solid @border_subtle;
+    border-radius: @radius_control;
+}
+
+QLabel#InspectorKeyLabel {
+    color: @text_secondary;
+    font-size: 11px;
+}
+
+QLabel#InspectorValLabel {
+    color: @text_bright;
+    font-family: @font_mono;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+/* ============================================================================
+   SCROLLBARS
+   ============================================================================ */
+QScrollBar:vertical {
+    background: @bg_input;
+    width: 6px;
+    margin: 0px;
+    border-radius: 3px;
+}
+
+QScrollBar::handle:vertical {
+    background: @border_input;
+    min-height: 18px;
+    border-radius: 3px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: @text_muted;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0px;
+}

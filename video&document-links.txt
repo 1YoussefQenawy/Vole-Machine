@@ -1,0 +1,26 @@
+CS213 OOP Programming — Assignment 2, Part 2
+Vole Machine Application
+
+## VIDEO DEMONSTRATION
+
+This video demonstrates our C++ Vole Machine Simulator, showcasing its graphical user interface and core functionality. It walks through loading and executing programs, stepping through instructions, and observing changes in registers, memory, and screen output. It also demonstrates arithmetic operations, conditional jumps, loops, and program execution using practical examples.
+
+Video Link:
+https://drive.google.com/file/d/1DkxT4an6f0IwYm_Nj9r4toz-2ZPZn-Nc/view?usp=sharing
+
+## SHARED DOCUMENT
+
+This document presents the design and implementation of our C++ Vole Machine Simulator. It covers the machine architecture, initial and AI-generated designs, the comparison and selection of the final design, and the implementation of its core classes. It also includes example programs, our experience with AI-assisted design, the final UML class diagram, and demonstrations of the completed application.
+
+Shared Document Link:
+https://drive.google.com/file/d/1wanjlNDdjYJ18owtlcC-_Rz7KCXoFX7z/view?usp=sharing
+
+COURSE DETAILS
+
+Course: CS213 — OOP Programming
+Assignment: Assignment 2, Part 2
+Institution: Faculty of Computers and Artificial Intelligence (FCAI), Cairo University
+Supervisor: Dr Mohammad El-Ramly
+Technical Assistent: Mahetab
+Section: 20
+Submission Date: 11 November 2026
